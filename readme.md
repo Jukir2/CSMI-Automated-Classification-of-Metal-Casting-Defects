@@ -4,22 +4,22 @@ This repository contains a complete, reproducible pipeline for **automated visua
 
 The project is built around the public *casting product* dataset from Kaggle (binary classification of casting surfaces into **defective** vs **non-defective** parts) and focuses on:
 
-- transparent training & evaluation of a transfer learning model,  
-- detailed QA of model quality and calibration,  
+- transparent training & evaluation of a transfer learning model,
+- detailed QA of model quality and calibration,
 - a small GUI app for interactive inspection of test images.
 
 ---
 
 ## 1. Project Overview
 
-- **Task:** Binary image classification of casting surfaces  
-  - `def_front` – defective part  
-  - `ok_front` – non-defective part  
-- **Model:** `mobilenet_v3_small` pretrained on ImageNet, used as a **frozen feature extractor** with a custom 2-class classifier head.  
-- **Framework:** PyTorch  
+- **Task:** Binary image classification of casting surfaces
+  - `def_front` – defective part
+  - `ok_front` – non-defective part
+- **Model:** `mobilenet_v3_small` pretrained on ImageNet, used as a **frozen feature extractor** with a custom 2-class classifier head.
+- **Framework:** PyTorch
 - **Extras:**
-  - Rich console logs and summary tables (train / val / test)  
-  - Calibration metrics (Brier score, ECE, MCE, Expected Cost)  
+  - Rich console logs and summary tables (train / val / test)
+  - Calibration metrics (Brier score, ECE, MCE, Expected Cost)
   - Tkinter-based **QA Inspector** app to inspect single images or entire test folders.
 
 ---
@@ -28,10 +28,9 @@ The project is built around the public *casting product* dataset from Kaggle (bi
 
 The project was developed as a team effort:
 
-- **Jakub Wiktor Michalski** – Project Manager / AI Engineer  
-- **Mikołaj Skrocki** – Tech Lead / Software Engineer  
-- **Piotr Żuryński** – AI/ML Engineer / QA & Release Owner  
-
+- **Jakub Wiktor Michalski** – Project Manager / AI Engineer
+- **Mikołaj Skrocki** – Tech Lead / Software Engineer
+- **Piotr Żuryński** – AI/ML Engineer / QA & Release Owner
 
 ---
 
