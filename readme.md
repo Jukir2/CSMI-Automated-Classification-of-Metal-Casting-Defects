@@ -32,6 +32,9 @@ The project was developed as a team effort:
 - **Mikołaj Skrocki** – Tech Lead / Software Engineer  
 - **Piotr Żuryński** – AI/ML Engineer / QA & Release Owner  
 
+
+---
+
 ## 3. Dataset
 
 The project uses the *Real-life industrial dataset of casting product* from Kaggle:
