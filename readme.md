@@ -24,7 +24,15 @@ The project is built around the public *casting product* dataset from Kaggle (bi
 
 ---
 
-## 2. Dataset
+## 2. Team & Roles
+
+The project was developed as a team effort:
+
+- **Jakub Wiktor Michalski** – Project Manager / AI Engineer  
+- **Mikołaj Skrocki** – Tech Lead / Software Engineer  
+- **Piotr Żuryński** – AI/ML Engineer / QA & Release Owner  
+
+## 3. Dataset
 
 The project uses the *Real-life industrial dataset of casting product* from Kaggle:
 
