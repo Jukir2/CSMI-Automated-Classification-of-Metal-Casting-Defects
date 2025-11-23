@@ -56,8 +56,9 @@ casting_data_fixed4/
     test/
         def_front/
         ok_front/
+```
 
-
+---
 
 ## 4. Environment & Installation
 
@@ -69,7 +70,7 @@ Before you start, you should have:
 - **Git**
 - (Optional but recommended) **CUDA-capable GPU** with recent NVIDIA drivers
 
-> Install PyTorch according to your OS / CUDA version from the official PyTorch website.  
+> Install PyTorch according to your OS / CUDA version from the official PyTorch website.
 
 ### 4.2. Create and activate a virtual environment
 
@@ -78,6 +79,7 @@ It is recommended to create a virtual environment to manage project dependencies
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
+```
 
 ### 4.3. Install Python dependencies
 
@@ -86,18 +88,19 @@ Install the required packages using the provided `requirements.txt` file:
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
-
+```
 
 ---
 
 ## 5. Training the MobileNetV3 model
 
-The main training entry point is `model.py`.  
+The main training entry point is `model.py`.
 
-### 5.1 Basic training command
+### 5.1. Basic training command
 
 ```bash
 python model.py --data casting_data --model mobilenet --aug-level standard --lr 2e-4
+```
 
 ### 5.2. Training outputs and artifacts
 
@@ -119,6 +122,7 @@ runs_final_v4/
     ├── roc_curve.png
     ├── reliability.png
     └── top-errors.png
+```
 
 ---
 
@@ -128,13 +132,13 @@ After training, the script automatically reloads the best MobileNetV3 checkpoint
 
 On the cleaned **casting_data_fixed4** dataset the final run achieves:
 
-- **Training set:** accuracy ≈ **0.98**, macro-F1 ≈ **0.98**, recall ≈ **0.98**, precision ≈ **0.99**.  
-- **Validation set:** accuracy ≈ **0.97**, macro-F1 ≈ **0.97**, recall ≈ **0.98**, precision ≈ **0.97**.  
+- **Training set:** accuracy ≈ **0.98**, macro-F1 ≈ **0.98**, recall ≈ **0.98**, precision ≈ **0.99**.
+- **Validation set:** accuracy ≈ **0.97**, macro-F1 ≈ **0.97**, recall ≈ **0.98**, precision ≈ **0.97**.
 - **Test set:** accuracy ≈ **0.96**, macro-F1 ≈ **0.96**, recall ≈ **0.97**, precision ≈ **0.97**.
 
-This corresponds to an overall error rate of about **2%** on train/validation and **4%** on the test set.  
-The script also prints a compact “quality metrics” table (Train / Valid / Test) with additional metrics such as Balanced Accuracy, MCC, AUC-PR, AUC-ROC, Brier score, ECE/MCE and Expected Cost, which can be inspected directly in the console output if needed.
+This corresponds to an overall error rate of about **2%** on train/validation and **4%** on the test set.
 
+The script also prints a compact "quality metrics" table (Train / Valid / Test) with additional metrics such as Balanced Accuracy, MCC, AUC-PR, AUC-ROC, Brier score, ECE/MCE and Expected Cost, which can be inspected directly in the console output if needed.
 
 ---
 
@@ -148,3 +152,4 @@ With your virtual environment activated and dependencies installed:
 
 ```bash
 python qa_inspector.py
+```
