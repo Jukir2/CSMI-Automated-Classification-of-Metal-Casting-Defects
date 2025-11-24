@@ -153,3 +153,104 @@ With your virtual environment activated and dependencies installed:
 ```bash
 python qa_inspector.py
 ```
+
+### 7.2. QA Inspector — running the compiled .exe
+
+If you don't want to install Python, you can run QA Inspector as a standalone Windows executable. Your `dist/` folder should look like:
+
+```text
+dist/
+├── QA_Inspector.exe
+└── qa_inspector_settings.json
+```
+
+**Run:**
+
+1. Go to: `dist/`
+2. Double-click: `QA_Inspector.exe`
+
+### 7.3. Using QA Inspector
+
+#### 1. Load model
+
+- Click **Browse…** and select a model file:
+  - TorchScript (`*.torchscript.pt`, `*.pt`)
+  - Full model saved with `torch.save(model, ...)` (`*.pt`, `*.pth`)
+  - State_dict alone is not supported — export full model/TorchScript.
+
+#### 2. Set classes
+
+- Enter exact class names, comma-separated, e.g.: `def_front, ok_front`
+- Use **Swap classes** if the order is reversed.
+
+#### 3. Choose Positive class + Threshold
+
+- Pick which class the threshold applies to (usually `def_front`).
+- Move the **Threshold** slider to trade missed defects (FN) vs false alarms (FP).
+
+#### 4. Match preprocessing to training
+
+- **Channels:** RGB (3ch) for ImageNet backbones, grayscale (1ch) if trained that way.
+- **Size:** usually 224.
+- **Normalization:**
+  - RGB preset: ImageNet norm
+  - Gray preset: 0.5 / 0.5
+- Optional **CenterCrop** to mirror training.
+
+#### 5. Single image mode
+
+- Click **Open image…**
+- Click **Predict**
+
+#### 6. Batch mode
+
+- Click **Load Folder…** and point to a root with subfolders per class:
+
+  ```text
+  test/
+  ├── def_front/
+  └── ok_front/
+  ```
+
+- Navigate with **Previous** / **Next** / **Random**, then **Predict**.
+- The status line shows GT → MATCH/MISMATCH for quick scanning.
+
+#### Outputs shown
+
+- Predicted label (OK/DEF)
+- Confidence (max probability)
+- p(OK) and p(DEF)
+- Latency (ms)
+- Current threshold + class mapping
+
+#### Settings persistence
+
+- App auto-saves your last settings (size, mean/std, threshold, device, etc.) into `qa_inspector_settings.json`.
+- Delete this file if you want a clean reset.
+
+![QA Inspector Interface](images/qainspector.png)
+*Figure 7.3a: QA Inspector interface showing prediction results*
+
+---
+
+## 8. Recommendations
+
+Based on our experiments and error analysis, here are practical recommendations for using this model:
+
+- **Use it as decision support.** The model is reliable, but we still recommend a human-in-the-loop setup, especially for borderline cases.
+- **Keep capture conditions consistent.** The model works best when the camera angle and lighting match the training setup. Strong glare or deep shadows increase errors.
+- **Watch low-contrast rims.** Tiny defects on low-contrast areas are the main source of missed defects, so these cases deserve extra attention.
+- **Tune the threshold for your goal.** If the priority is to catch every defect, lower the threshold (higher recall). If the priority is fewer false alarms, raise it.
+- **Re-check calibration after changes.** If camera, lighting, surface finish, or part type changes, we should re-validate performance and possibly re-tune the threshold.
+
+---
+
+## 9. Next Steps
+
+If we continued this project, these are the most natural next directions:
+
+1. **Small production-style validation set.** Collect a small batch of real shop-floor images to confirm robustness under real lighting and handling.
+2. **Improve lighting / reduce glare at capture.** Even a simple diffuser or better angle control could reduce reflection-based false positives.
+3. **Optional light fine-tuning.** Right now we use MobileNetV3 as a frozen feature extractor. If needed, we could unfreeze the last block(s) and fine-tune with a very low LR, then compare fairly again.
+4. **More targeted data for edge cases.** Add more examples of low-contrast defects and shiny rims, because these dominate the remaining errors.
+5. **Extend QA Inspector with quick reporting.** For example: export a CSV summary for a batch run (counts, FP/FN list), keeping the same simple workflow.
