@@ -1,0 +1,15 @@
+{
+  "model_file": "C:/Metal_Castings/.FINAL/model_full.pt",
+  "classes": [
+    "def_front",
+    "ok_front"
+  ],
+  "positive": "ok_front",
+  "channels": "RGB (3ch)",
+  "input_size": 224,
+  "threshold": 0.540590405904059,
+  "mean": "0.485, 0.456, 0.406",
+  "std": "0.229, 0.224, 0.225",
+  "centercrop": true,
+  "device": "auto"
+}

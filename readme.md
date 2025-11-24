@@ -156,7 +156,15 @@ python qa_inspector.py
 
 ### 7.2. QA Inspector — running the compiled .exe
 
-If you don't want to install Python, you can run QA Inspector as a standalone Windows executable. Your `dist/` folder should look like:
+If you don't want to install Python, you can run QA Inspector as a standalone Windows executable.
+
+**Building the executable:**
+
+```bash
+pyinstaller --onefile --windowed --name "QA_Inspector" prototype_final.py --add-data ".FINAL/model_full.pt;.FINAL" --add-data "qa_inspector_settings.json;."
+```
+
+After building, your `dist/` folder should look like:
 
 ```text
 dist/
