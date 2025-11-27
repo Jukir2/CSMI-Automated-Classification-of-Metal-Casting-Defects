@@ -99,7 +99,7 @@ The main training entry point is `model.py`.
 ### 5.1. Basic training command
 
 ```bash
-python model.py --data casting_data --model mobilenet --aug-level standard --lr 2e-4
+python model_final.py --data casting_data_fixed4 --model mobilenet --aug-level standard --lr 2e-4
 ```
 
 ### 5.2. Training outputs and artifacts
@@ -144,14 +144,14 @@ The script also prints a compact "quality metrics" table (Train / Valid / Test) 
 
 ## 7. QA Inspector GUI
 
-In addition to the training script, the repository includes a desktop application **`qa_inspector.py`** that allows manual inspection of the trained model on individual images or whole folders.
+In addition to the training script, the repository includes a desktop application **`prototype_final.py`** that allows manual inspection of the trained model on individual images or whole folders.
 
 ### 7.1. Launching the inspector
 
 With your virtual environment activated and dependencies installed:
 
 ```bash
-python qa_inspector.py
+python prototype_final.py
 ```
 
 ### 7.2. QA Inspector — running the compiled .exe
