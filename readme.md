@@ -72,7 +72,14 @@ Before you start, you should have:
 
 > Install PyTorch according to your OS / CUDA version from the official PyTorch website.
 
-### 4.2. Create and activate a virtual environment
+### 4.2. Clone the repository
+
+```bash
+git clone https://github.com/Jukir2/CSMI-Automated-Classification-of-Metal-Casting-Defects.git
+cd CSMI-Automated-Classification-of-Metal-Casting-Defects
+```
+
+### 4.3. Create and activate a virtual environment
 
 It is recommended to create a virtual environment to manage project dependencies.
 
@@ -81,7 +88,7 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 4.3. Install Python dependencies
+### 4.4. Install Python dependencies
 
 Install the required packages using the provided `requirements.txt` file:
 
